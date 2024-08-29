@@ -18,8 +18,10 @@ Este proceso se realiza utilizando **Cloudera.**
 
 [AQUÍ PUEDES VER EL CÓDIGO EN BASH DE LINUX.](https://github.com/elena210910/HadoopHDFS_HiveProject/blob/main/Shell_script) 
 
-**AQUI PUEDES VER EL RESULTADO FINAL!**
+**Y EL RESULTADO FINAL!**
 
 
 ![IMAGINL](https://github.com/elena210910/HadoopHDFS_HiveProject/blob/main/cloudera.PNG)
+
+**Hive** es una herramienta poderosa para la consulta y análisis de grandes volúmenes de datos almacenados en HDFS. 
 
