@@ -1,0 +1,36 @@
+# Etapa 1: Creación del directorio y carga del archivo en HDFS
+
+sudo -u hdfs hdfs dfs -mkdir /user/cloudera/flights_data                    # Crear un directorio
+sudo -u hdfs hdfs dfs -chown cloudera:supergroup /user/cloudera/flights_data    # Cambiar el propietario del directorio
+hdfs dfs -put flights.csv /user/cloudera/flights_data/                 # Subir el archivo CSV a HDFS
+
+# Etapa 2: Verificación de la presencia del archivo en HDFS
+
+hdfs dfs -ls /user/cloudera/flights_data   # Verificar si el archivo está en el directorio
+
+# Etapa 3: Inicio de Hive
+hive                                        # Iniciar Hive en la terminal
+beeline -u jdbc:hive2://localhost:10000     # Alternativamente y mejor, iniciar Beeline
+
+# Etapa 4: Creación de la tabla en Hive
+
+CREATE TABLE flights_data (                      # Crear una tabla en Hive
+    flight_id INT,
+    airline STRING,
+    origin STRING,
+    destination STRING,
+    date STRING,
+    delay INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+# Etapa 5: Carga de datos en la tabla desde HDFS
+
+LOAD DATA INPATH '/user/cloudera/flights_data/flights.csv' INTO TABLE flights_data;    # Cargar datos en la tabla desde HDFS
+
+# Etapa 6: Consulta de datos en la tabla
+
+SELECT * FROM flights_data
+LIMIT 5;                 # Consultar datos de la tabla con un limite de 5 resultados salientes
